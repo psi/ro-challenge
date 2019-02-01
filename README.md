@@ -1,6 +1,40 @@
 # Code challenge
 
-## General approach
+## Building the project
+
+The only local dependency required is Terraform. It can be downloaded
+and installed from:
+
+https://www.terraform.io/downloads.html
+
+Once Terraform has been installed, you'll need to set appropriate
+environment variables for your AWS credentials, namely:
+
+```shell
+$ export AWS_ACCESS_KEY_ID=xxxx
+$ export AWS_SECRET_ACCESS_KEY=xxxx
+```
+
+The infrastructure can be built and the Hello app launched by running:
+
+`$ ./launch.sh`
+
+Upon completion, you'll be given a URL which you can curl to test out
+the service:
+
+```shell
+$ curl http://x.x.x.x/hello
+$ curl http://x.x.x.x/hello?name=JD
+```
+
+## Some final thoughts
+
+By and large, my initial approach held, with the notable exception that
+I decided that Chef was overkill for the amount of provisioning needed
+on the EC2 instance once it had been launched. Instead, I opted for a
+short shell script that is uploaded and executed by Terraform.
+
+## Initial approach
 
 After reading the written requirements and asking EJ for clarification
 on a few points, I've decided to take the following approach, breaking
